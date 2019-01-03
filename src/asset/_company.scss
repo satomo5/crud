@@ -1,0 +1,49 @@
+.react-tel-input input[type=tel] {
+    width: 100%;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.card-header {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.card-link {
+    font-weight: normal;
+    color: rgb(26, 26, 26);
+    
+    :hover {
+        color: rgb(26, 26, 26);
+    }
+}
+
+.card-content {
+    margin: 15px 0px;
+}
+
+.card-label {
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 15px;
+}
+
+.empty-data {
+    text-align: center;
+    color: rgb(173, 173, 173);
+    margin: 150px 40px;
+}
+
+.content-card {
+    margin-bottom: 3rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
