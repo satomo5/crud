@@ -1,14 +1,19 @@
-.react-tel-input input[type=tel] {
-    width: 100%;
+.intl-tel-input {
+    display: block;
 }
-
 .card {
     margin-bottom: 1rem;
 }
 
 .card-header {
+    display: flex;
+    justify-content: space-between;
     font-size: 23px;
     font-weight: bold;
+}
+
+.card-header-delete {
+    
 }
 
 .card-link {

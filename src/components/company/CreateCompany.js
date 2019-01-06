@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PhoneCode from 'react-phone-input-2';
+import PhoneCode from 'react-intl-tel-input';
+import 'react-intl-tel-input/dist/main.css';
 import axios from 'axios';
 
 export default class CreateCompany extends Component {
@@ -15,7 +16,8 @@ export default class CreateCompany extends Component {
             company_name: '',
             company_address: '',
             company_revenue: '',
-            company_phone: ''
+            company_phone_code: '',
+            company_phone_number: ''
         }
     }
 
@@ -34,11 +36,13 @@ export default class CreateCompany extends Component {
             company_revenue: e.target.value
         })
     }
-    getCompanyPhone(e) {
-        // console.log(e);
+
+    getCompanyPhone(status, value, countryData, number, id) {
         this.setState({
-            company_phone: e
+            company_phone_code: countryData.dialCode,
+            company_phone_number: value
         })
+        console.log(this.state)
     }
 
     onSubmit(e) {
@@ -47,19 +51,21 @@ export default class CreateCompany extends Component {
             company_name: this.state.company_name,
             company_address: this.state.company_address,
             company_revenue: this.state.company_revenue,
-            company_phone: this.state.company_phone
+            company_phone_code: this.state.company_phone_code,
+            company_phone_number: this.state.company_phone_number
         };
 
-        axios.post('http://localhost:4000/company/add', obj).then(res => console.log(res.data));
+        axios.post('http://localhost:4000/company/add', obj).then(res => this.props.refresh());
         
         this.setState({
             company_name: '',
             company_address: '',
             company_revenue: '',
-            company_phone: ''
+            company_phone_code: '',
+            company_phone_number: ''
         })
     }
-
+    
     render() {
         return (
             <div className="col-sm-6">
@@ -98,12 +104,12 @@ export default class CreateCompany extends Component {
                     </div>
                     <div className="form-group">
                         <label>Phone No:</label>
-                        <PhoneCode 
-                        className="form-control"
-                        enableSearchField= "true"
-                        inputExtraProps={{required: true}}
-                        value={this.state.company_phone}
-                        onChange={this.getCompanyPhone} />
+                        <PhoneCode
+                        preferredCountries={['id']} 
+                        css={['intl-tel-input', 'form-control']}
+                        onPhoneNumberChange={this.getCompanyPhone}
+                        onPhoneNumberBlur={this.getCompanyPhone}
+                        />
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Create" className="btn btn-primary"/>

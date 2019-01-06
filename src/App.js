@@ -14,7 +14,7 @@ class App extends Component {
 
           <Switch>
             <Route path="/" component={ViewCompany} exact />
-            <Route path="/office" component={ViewOffice} />
+            <Route path="/company/:companyid" component={ViewOffice} />
           </Switch>
 
         </div>
