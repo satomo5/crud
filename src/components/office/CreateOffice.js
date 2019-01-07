@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import Date from 'react-datepicker';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 
 export default class CreateOffice extends Component {
@@ -21,7 +22,6 @@ export default class CreateOffice extends Component {
             company_id: ''
         }
     }
-
     componentDidMount() {
         axios.get('http://localhost:4000/company').then(response => {
             const companyList = response.data;
@@ -51,6 +51,7 @@ export default class CreateOffice extends Component {
     }
 
     getOfficeDate(e) {
+        console.log(typeof e);
         this.setState({
             office_date: e
         })
@@ -80,11 +81,12 @@ export default class CreateOffice extends Component {
             office_name: '',
             office_loclat: '',
             office_loclong: '',
-            office_date: '',
+            office_date: new Date(),
             company_id: ''
         })
     }
     render() {
+        let startDate = this.state.office_date;
         let companyList = this.state.company;
         let optionCompany = companyList.map((obj, i) =>
             <option key={i} value={obj._id}>{obj.company_name}</option>
@@ -127,14 +129,16 @@ export default class CreateOffice extends Component {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="form-group">
+                    <div className="form-group">
                         <label>Office Start Date:</label>
-                        <Date 
+                        <DatePicker 
                         required
+                        dateFormat="MM/dd/yyyy"
                         className="form-control"
-                        selected={this.state.office_date}
+                        minDate={new Date()}
+                        selected={startDate}
                         onChange={this.getOfficeDate} />
-                    </div> */}
+                    </div>
                     <div className="form-group">
                         <label>Company:</label>
                         <select 

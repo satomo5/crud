@@ -32,7 +32,7 @@ export default class ViewCompany extends Component {
                     <CreateOffice refresh={this.refreshIt}/>
                 </div>
                 <hr />
-                <h1 className="content-card">Company</h1>
+                <h1 className="content-card">Companies</h1>
                 <div>
                     {this.state.company.length === 0 ? 
                         <EmptyCompany /> : <CardboardCompany refreshed={this.state.refreshed} key={this.state.company._id} /> }

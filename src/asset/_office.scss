@@ -1,9 +1,34 @@
+.office-container {
+    height: 22em;
+}
+
 .office-title {
     font-size: 2.5em;
     margin: 25px 0px;
 }
 
+.office-list {
+    margin: 10px 0px;
+}
+
 .office-label {
     font-weight: bold;
     font-size: 20px;
+}
+
+.office-button {
+    margin: 16px 0px;
+    text-align: right;
+
+    button {
+        display: inline-block;
+    }
+}
+
+.react-datepicker-wrapper {
+    display: block;
+}
+
+.react-datepicker__input-container {
+    display: block;
 }

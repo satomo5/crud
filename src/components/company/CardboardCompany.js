@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ViewCompany from './ViewCompany';
 
 export default class CardboardCompany extends Component {
     constructor(props) {
@@ -17,10 +16,6 @@ export default class CardboardCompany extends Component {
         axios.get('http://localhost:4000/company').then(response => {
             const companyList = response.data;
             this.setState({company:companyList});
-        });
-        axios.get('http://localhost:4000/office').then(response => {
-            const officeList = response.data;
-            this.setState({office:officeList});
         });
     }
 
@@ -71,8 +66,6 @@ export default class CardboardCompany extends Component {
                         </div>
                     </div>
                 )}
-
-                <Route path="/office/:id" component={ViewCompany} />
             </div>
         )
     }

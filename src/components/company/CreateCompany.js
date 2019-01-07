@@ -42,7 +42,6 @@ export default class CreateCompany extends Component {
             company_phone_code: countryData.dialCode,
             company_phone_number: value
         })
-        console.log(this.state)
     }
 
     onSubmit(e) {
@@ -63,7 +62,9 @@ export default class CreateCompany extends Component {
             company_revenue: '',
             company_phone_code: '',
             company_phone_number: ''
-        })
+        });
+
+        alert('Input Company Success');
     }
     
     render() {
